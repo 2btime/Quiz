@@ -10,41 +10,30 @@ const questions = [
 let currentQuestion = 0;
 document.getElementById("question").innerText = questions[currentQuestion].question;
 
-// 정답 확인 기능 추가하기
 function checkAnswer() {
     const userAnswer = document.getElementById("answer").value;
     const correctAnswer = questions[currentQuestion].answer;
 
-    if(userAnswer === correctAnswer) {
+    if (userAnswer === correctAnswer) {
         document.getElementById("result").innerText = "정답입니다!";
-        currentQuestion++;
-        
-        if(currentQuestion < questions.length) {
-            document.getElementById("question").innerText = questions[currentQuestion].question;
-            document.getElementById("answer").value = ""; // 입력창 비우기
-            document.getElementById("hint").innerText = ""; // 힌트 초기화
-        } else {
-            document.getElementById("question").innerText = "모든 문제를 맞췄습니다!";
-            document.getElementById("answer").style.display = "none"; // 숨기기
-            document.querySelector("button").style.display = "none";
-            document.getElementById("restart").style.display = "block"; // 보이기
-        }
+        document.getElementById("hint").innerText = ""; // 힌트 초기화
+
+        // 1초 후에 다음 문제로 넘어가도록 설정
+        setTimeout(() => {
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+                document.getElementById("question").innerText = questions[currentQuestion].question;
+                document.getElementById("answer").value = ""; // 입력창 초기화
+                document.getElementById("result").innerText = ""; // 정답 메시지 초기화
+            } else {
+                document.getElementById("question").innerText = "모든 문제를 맞췄습니다!";
+                document.getElementById("answer").style.display = "none"; // 숨기기
+                document.querySelector("button").style.display = "none";
+                document.getElementById("restart").style.display = "block"; // 다시 시작 버튼 보이기
+            }
+        }, 1000); // 1초 동안 정답 메시지를 표시
     } else {
         document.getElementById("result").innerText = "틀렸습니다. 다시 시도하세요!";
         document.getElementById("hint").innerText = `힌트: 첫 글자는 '${correctAnswer.charAt(0)}' 입니다`; // 첫 글자 힌트
     }
-}
-
-// 다시 시작 기능
-function restartQuiz() {
-    currentQuestion = 0; // 초기화
-    document.getElementById("question").innerText = questions[currentQuestion].question;
-    document.getElementById("answer").value = "";
-    document.getElementById("result").innerText = "";
-    document.getElementById("hint").innerText = ""; // 힌트 초기화
-
-    // 입력창과 제출 버튼을 다시 보이게 하고, 다시 시작 버튼은 숨기기
-    document.getElementById("answer").style.display = "block";
-    document.querySelector("button").style.display = "block";
-    document.getElementById("restart").style.display = "none";
 }
