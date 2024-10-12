@@ -52,11 +52,21 @@ function displayChoices() {
         button.onclick = () => {
             clearInterval(timer); // 타이머 정지
             checkAnswer(choice);
+            // 클릭한 후 호버 상태 초기화
+            removeHoverEffect(); // 추가된 기능
         };
         choicesEl.appendChild(button);
     });
 
     startTimer(); // 타이머 시작
+}
+
+function removeHoverEffect() {
+    const buttons = choicesEl.getElementsByTagName("button");
+    for (let button of buttons) {
+        // 버튼의 호버 효과를 제거
+        button.blur(); // 버튼에서 포커스를 제거하여 호버 효과를 없앰
+    }
 }
 
 function startTimer() {
