@@ -52,8 +52,7 @@ function displayChoices() {
         button.onclick = () => {
             clearInterval(timer); // 타이머 정지
             checkAnswer(choice);
-            // 클릭한 후 호버 상태 초기화
-            removeHoverEffect(); // 추가된 기능
+            resetHover(); // 클릭 후 호버 상태 초기화
         };
         choicesEl.appendChild(button);
     });
@@ -61,10 +60,9 @@ function displayChoices() {
     startTimer(); // 타이머 시작
 }
 
-function removeHoverEffect() {
+function resetHover() {
     const buttons = choicesEl.getElementsByTagName("button");
     for (let button of buttons) {
-        // 버튼의 호버 효과를 제거
         button.blur(); // 버튼에서 포커스를 제거하여 호버 효과를 없앰
     }
 }
@@ -91,11 +89,7 @@ function checkAnswer(selectedChoice) {
         resultEl.innerText = "정답입니다!";
         score += 10;
     } else {
-        if (selectedChoice === null) {
-            resultEl.innerText = "시간 초과!"; // 시간 초과 메시지
-        } else {
-            resultEl.innerText = "틀렸습니다!";
-        }
+        resultEl.innerText = selectedChoice === null ? "시간 초과!" : "틀렸습니다!";
         score -= 5; // 시간 초과 또는 오답 시 점수 5점 차감
     }
 
