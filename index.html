@@ -6,6 +6,14 @@
     <title>우리말 도전</title>
     <!-- Bootstrap CSS CDN 추가 -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .active {
+            background-color: #007bff;
+            color: white;
+            border-color: #007bff;
+        }
+    </style>
+
 </head>
 <body class="bg-light">
     <div class="container d-flex justify-content-center align-items-center min-vh-100">
@@ -15,7 +23,7 @@
             <!-- 진행도: 우측 위로 이동 -->
             <div class="d-flex justify-content-between">
                 <p id="progress" class="font-weight-bold">문제 1 / 5</p>
-                <p id="timer" class="font-weight-bold text-danger">10</p> <!-- 숫자 타이머 -->
+                <p id="timer" class="font-weight-bold text-danger">15</p> <!-- 숫자 타이머 -->
             </div>
             
             <!-- 질문과 보기 -->
@@ -34,7 +42,7 @@
             <button id="restart" onclick="restartQuiz()" class="btn btn-secondary btn-block mt-3" style="display: none;">다시 시작</button>
         </div>
     </div>
-    update 2024.10.12.15:00
+    update 2024.10.13.13:00
     <script src="quiz.js"></script>
 </body>
 </html>
