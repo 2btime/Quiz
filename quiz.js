@@ -1,3 +1,4 @@
+const images = ['./img1.jpg', './img2.jpg', './img3.jpg', './img4.jpg'];
 let currentQuestion = 0;
 let score = 0;
 let timer;
@@ -12,12 +13,13 @@ const progressEl = document.getElementById("progress");
 const timerEl = document.getElementById("timer");
 let covers = Array.from(document.querySelectorAll(".cover")); // 모든 가림막 요소 가져오기
 
-
+// 문제 데이터 불러오기 함수
 function fetchQuestions() {
     fetch('questions.json')
         .then(response => response.json())
         .then(data => {
             questions = shuffleArray(data).slice(0, 10); // 문제를 섞고, 10개만 사용
+            setRandomImage(); // 퀴즈 시작 시 랜덤 이미지 한 번 설정
             displayChoices();
         })
         .catch(error => console.error('Error loading questions:', error));
@@ -32,6 +34,13 @@ function shuffleArray(array) {
     return array;
 }
 
+// 랜덤 이미지 설정 함수
+function setRandomImage() {
+    const randomIndex = Math.floor(Math.random() * images.length);
+    document.querySelector('.image-container').style.backgroundImage = `url(${images[randomIndex]})`;
+}
+
+// 문제와 보기 표시 함수
 function displayChoices() {
     updateProgress();
     questionEl.innerText = questions[currentQuestion].question;
@@ -45,6 +54,7 @@ function displayChoices() {
     startTimer();
 }
 
+// 선택지 버튼 생성 함수
 function createChoiceButton(choice) {
     const button = document.createElement("button");
     button.className = "btn btn-outline-primary btn-block";
@@ -58,14 +68,17 @@ function createChoiceButton(choice) {
     return button;
 }
 
+// 모든 버튼 비활성화
 function disableAllButtons() {
     document.querySelectorAll("#choices .btn").forEach(btn => btn.disabled = true);
 }
 
+// 진행도 업데이트 함수
 function updateProgress() {
     progressEl.innerText = `문제 ${currentQuestion + 1} / ${questions.length}`;
 }
 
+// 타이머 시작 함수
 function startTimer() {
     let timeLeft = 15;
     timerEl.innerText = timeLeft;
@@ -81,15 +94,18 @@ function startTimer() {
     }, 1000);
 }
 
+// 타이머 제거 함수
 function clearTimer() {
     clearInterval(timer);
 }
 
+// 정답 체크 함수
 function checkAnswer(selectedChoice) {
     const correctAnswer = questions[currentQuestion].answer;
     const isCorrect = selectedChoice === correctAnswer;
 
     resultEl.innerText = isCorrect ? "정답입니다!" : (selectedChoice === null ? "시간 초과!" : "틀렸습니다!");
+    resultEl.style.color = isCorrect ? "blue" : "red"; // 정답일 때는 파란색, 틀렸을 때는 빨간색
 
     if (isCorrect) {
         score += 10;
@@ -111,28 +127,28 @@ function checkAnswer(selectedChoice) {
     }, 1000);
 }
 
+// 가림막 랜덤 제거 함수
 function revealCover() {
     if (covers.length > 0) {
-        // 랜덤하게 하나의 가림막을 제거
         const randomIndex = Math.floor(Math.random() * covers.length);
         const selectedCover = covers[randomIndex];
 
-        // 페이드 아웃 효과 후 제거
         selectedCover.style.opacity = "0";
         setTimeout(() => {
             selectedCover.style.display = "none";
         }, 500); // 0.5초 후 완전히 사라지게
 
-        // 배열에서 제거하여 다음 문제 맞출 때 다른 가림막을 선택할 수 있게 함
         covers.splice(randomIndex, 1);
     }
 }
 
+// 퀴즈 종료 함수
 function endQuiz() {
     resetUI();
     finalScoreEl.innerText = `모든 문제를 풀었습니다!\n 최종 점수: ${score}점`;
 }
 
+// UI 리셋 함수
 function resetUI() {
     questionEl.style.display = "none";
     choicesEl.style.display = "none";
@@ -145,6 +161,7 @@ function resetUI() {
     finalScoreEl.classList.add("text-primary", "bg-light", "p-3", "rounded", "border");
 }
 
+// 퀴즈 재시작 함수
 function restartQuiz() {
     clearTimer();
     currentQuestion = 0;
@@ -161,19 +178,15 @@ function restartQuiz() {
     restartBtn.style.display = "none";
     finalScoreEl.style.display = "none";
 
-    // 모든 가림막 요소를 다시 가져와서 배열 초기화
     covers = Array.from(document.querySelectorAll(".cover"));
-
     covers.forEach(cover => {
-        cover.style.display = "block"; // 가림막이 보이도록 설정
-        cover.style.opacity = "1";     // 불투명도를 1로 설정하여 완전히 가림
+        cover.style.display = "block"; 
+        cover.style.opacity = "1";     
     });
 
+    setRandomImage(); // 퀴즈 재시작 시 이미지 설정
     displayChoices();
 }
-
-
-
 
 // 최초 실행 시 질문 데이터 로드
 fetchQuestions();
