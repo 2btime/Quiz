@@ -2,183 +2,51 @@
     {
         "question": "다음 중 올바른 맞춤법은 무엇일까요?",
         "choices": ["설레임", "설렘", "설래임", "설례임"],
-        "answer": "설렘",
-        "difficulty": "easy"
+        "answer": "설렘"
     },
     {
-        "question": "다음 중 올바른 맞춤법은 무엇일까요?",
-        "choices": ["오랫만에", "오랜만에", "오래만에", "오랫동안"],
-        "answer": "오랜만에",
-        "difficulty": "easy"
+        "question": "다음 중 잘못된 표현은 무엇일까요?",
+        "choices": ["내 노트북이 고장이 났어.", "내일 시간 되면 연락해줘.", "그 사람과 인사를 나누었어.", "그 책을 읽어보면 재밌겠지."],
+        "answer": "그 책을 읽어보면 재밌겠지."
     },
     {
-        "question": "다음 중 바른 표현은 무엇일까요?",
-        "choices": ["안절부절못하다", "안절부절하다", "안저부절하다", "안저절하다"],
-        "answer": "안절부절못하다",
-        "difficulty": "easy"
+        "question": "다음 중 '날이 저물다'와 같은 의미를 가진 표현은 무엇일까요?",
+        "choices": ["날이 구름지다", "날이 어두워지다", "날이 밝아오다", "날이 흐려지다"],
+        "answer": "날이 어두워지다"
     },
     {
-        "question": "다음 중 옳은 표현은?",
-        "choices": ["왠일로", "웬일로", "웬일을", "왠일을"],
-        "answer": "웬일로",
-        "difficulty": "easy"
+        "question": "'없어지다'의 올바른 표현은?",
+        "choices": ["없어지다", "없어하다", "사라지다", "안 보여지다"],
+        "answer": "사라지다"
     },
     {
-        "question": "다음 중 맞춤법에 맞는 것은?",
-        "choices": ["되려", "도리어", "돌이려", "되리어"],
-        "answer": "도리어",
-        "difficulty": "easy"
+        "question": "다음 중 옳은 맞춤법은?",
+        "choices": ["짓궂다", "짖궂다", "짓굳다", "짖굳다"],
+        "answer": "짓궂다"
     },
     {
-        "question": "다음 중 올바른 표현은?",
-        "choices": ["무난히", "문안히", "모난히", "무난이"],
-        "answer": "무난히",
-        "difficulty": "easy"
+        "question": "다음 중 '일이 틀어지다'와 비슷한 표현은 무엇일까요?",
+        "choices": ["일이 순조롭다", "일이 뒤틀리다", "일이 미끄러지다", "일이 퍼지다"],
+        "answer": "일이 뒤틀리다"
     },
     {
-        "question": "다음 중 맞는 표현은?",
-        "choices": ["금세", "금새", "금세기", "금시"],
-        "answer": "금세",
-        "difficulty": "easy"
+        "question": "다음 중 '그럴싸하다'와 비슷한 뜻은 무엇일까요?",
+        "choices": ["엉성하다", "비슷하다", "근사하다", "대충하다"],
+        "answer": "근사하다"
     },
     {
-        "question": "다음 중 맞는 표현은?",
-        "choices": ["닦달하다", "닦떨하다", "닥달하다", "딱달하다"],
-        "answer": "닦달하다",
-        "difficulty": "easy"
+        "question": "다음 중 '시원찮다'와 같은 뜻은 무엇일까요?",
+        "choices": ["괜찮다", "부실하다", "우수하다", "감탄스럽다"],
+        "answer": "부실하다"
     },
     {
-        "question": "다음 중 옳은 표현은?",
-        "choices": ["어떻해", "어떻게", "어때해", "어떠해"],
-        "answer": "어떻게",
-        "difficulty": "easy"
+        "question": "다음 중 '진득하다'와 비슷한 뜻은 무엇일까요?",
+        "choices": ["끈기 있다", "지루하다", "흥미롭다", "상쾌하다"],
+        "answer": "끈기 있다"
     },
     {
-        "question": "다음 중 바른 맞춤법은?",
-        "choices": ["눈꼽", "눈곱", "눈고업", "눈곱이"],
-        "answer": "눈곱",
-        "difficulty": "easy"
-    },
-    
-    {
-        "question": "다음 중 어법에 맞는 표현은?",
-        "choices": ["서울에서 부산", "서울로 부산", "서울로 부터", "서울부터 부산까지"],
-        "answer": "서울부터 부산까지",
-        "difficulty": "medium"
-    },
-    {
-        "question": "다음 중 맞는 표현은?",
-        "choices": ["물어 보다", "물어보다", "물어보다가", "물어보았었다"],
-        "answer": "물어보다",
-        "difficulty": "medium"
-    },
-    {
-        "question": "다음 중 올바른 맞춤법은?",
-        "choices": ["금시초문", "금시 조문", "금시 추문", "금새 초문"],
-        "answer": "금시초문",
-        "difficulty": "medium"
-    },
-    {
-        "question": "다음 중 올바른 표현은?",
-        "choices": ["손을 세다", "속을 세다", "손을 흔들다", "속을 흔들다"],
-        "answer": "손을 흔들다",
-        "difficulty": "medium"
-    },
-    {
-        "question": "다음 중 맞는 표현은?",
-        "choices": ["숱이 적다", "수트가 적다", "숱은 많다", "숱에 맞다"],
-        "answer": "숱이 적다",
-        "difficulty": "medium"
-    },
-    {
-        "question": "다음 중 바른 맞춤법은?",
-        "choices": ["뜻밖에", "뜯밖에", "뜯밖에", "뜻밖의"],
-        "answer": "뜻밖에",
-        "difficulty": "medium"
-    },
-    {
-        "question": "다음 중 옳은 표현은?",
-        "choices": ["깊숙이", "깊슥이", "깊숙이로", "깊이로"],
-        "answer": "깊숙이",
-        "difficulty": "medium"
-    },
-    {
-        "question": "다음 중 바른 표현은?",
-        "choices": ["한가지", "한 가지", "한가 지", "한 가지로"],
-        "answer": "한 가지",
-        "difficulty": "medium"
-    },
-    {
-        "question": "다음 중 올바른 맞춤법은?",
-        "choices": ["방을 닫다", "문을 닫다", "방을 들다", "문을 들다"],
-        "answer": "문을 닫다",
-        "difficulty": "medium"
-    },
-    {
-        "question": "다음 중 맞는 표현은?",
-        "choices": ["상관없다", "상관없지", "상관없었다", "상관 없이"],
-        "answer": "상관없다",
-        "difficulty": "medium"
-    },
-    
-    {
-        "question": "다음 중 어법에 맞는 표현은?",
-        "choices": ["아슬한", "아슬아슬한", "아슬아슬", "아슬"],
-        "answer": "아슬아슬한",
-        "difficulty": "hard"
-    },
-    {
-        "question": "다음 중 맞는 표현은?",
-        "choices": ["쓰러지다", "쓰러트리다", "쓰러뜨리다", "쓰려졌다"],
-        "answer": "쓰러지다",
-        "difficulty": "hard"
-    },
-    {
-        "question": "다음 중 맞춤법에 맞는 표현은?",
-        "choices": ["심상지 않다", "심상치 않다", "심상차 않다", "심상치 않는"],
-        "answer": "심상치 않다",
-        "difficulty": "hard"
-    },
-    {
-        "question": "다음 중 맞는 표현은?",
-        "choices": ["동갑내기", "동갑내기만", "동갑나기", "동갑나기만"],
-        "answer": "동갑내기",
-        "difficulty": "hard"
-    },
-    {
-        "question": "다음 중 올바른 맞춤법은?",
-        "choices": ["바둥거리다", "바둥거리는", "바동거리다", "바동거리는"],
-        "answer": "바둥거리다",
-        "difficulty": "hard"
-    },
-    {
-        "question": "다음 중 옳은 표현은?",
-        "choices": ["우물 안 개구리", "우물 밖 개구리", "우물 안에 개구리", "우물 속 개구리"],
-        "answer": "우물 안 개구리",
-        "difficulty": "hard"
-    },
-    {
-        "question": "다음 중 올바른 맞춤법은?",
-        "choices": ["배꼽이 빠지다", "배꼽 빠지다", "배꼽 빠진다", "배꼽이 빠진다"],
-        "answer": "배꼽이 빠지다",
-        "difficulty": "hard"
-    },
-    {
-        "question": "다음 중 맞는 표현은?",
-        "choices": ["뻐끔거리다", "뻐금거리다", "뻐금거리는", "뻐끔거리는"],
-        "answer": "뻐끔거리다",
-        "difficulty": "hard"
-    },
-    {
-        "question": "다음 중 맞는 표현은?",
-        "choices": ["빼다박다", "빼닮다", "뺀질거리다", "빼다"],
-        "answer": "빼닮다",
-        "difficulty": "hard"
-    },
-    {
-        "question": "다음 중 어법에 맞는 표현은?",
-        "choices": ["다시 시작해요", "다시 해봐요", "다시 시작하자", "다시 하자"],
-        "answer": "다시 시작하자",
-        "difficulty": "hard"
+        "question": "다음 중 '묵묵하다'와 같은 뜻은 무엇일까요?",
+        "choices": ["시끄럽다", "말이 없다", "떠들썩하다", "즐겁다"],
+        "answer": "말이 없다"
     }
 ]
