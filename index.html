@@ -6,35 +6,104 @@
     <title>우리말 도전</title>
     <!-- Bootstrap CSS CDN 추가 -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* 메인 컨테이너 스타일 */
+        .main-container {
+            max-width: 500px; /* 최대 너비를 제한하여 화면 크기에 관계없이 일관성 유지 */
+            width: 100%; /* 화면 크기에 맞춰 조정 */
+            margin: 0 auto; /* 중앙 정렬 */
+            padding: 20px; /* 적절한 내부 여백 */
+        }
+
+        /* 이미지 스타일 */
+        .image-container {
+            position: relative; /* 가림막 위치를 위한 설정 */
+            width: 100%;
+            height: 300px; /* 원하는 높이로 설정 */
+            margin-bottom: 10px; /* 카드와 간격 조정 */
+            background-image: url('./ma.jpg'); /* 사용할 이미지 경로 */
+            background-size: cover;
+            background-position: center;
+            border: 2px solid #ddd; /* 이미지 외곽선 */
+        }
+        
+        /* 퀴즈 카드 스타일 */
+        .quiz-card {
+            background-color: rgba(255, 255, 255, 0.9); /* 카드 배경색 */
+            border: 1px solid #ddd; /* 카드 외곽선 */
+            width: 100%; /* 화면 크기에 따라 조정 */
+        }
+
+        /* 가림막 스타일 */
+        .cover {
+            position: absolute;
+            width: 50%; /* 가로로 2등분 */
+            height: 20%; /* 세로로 5등분 */
+            background-color: rgba(0, 0, 0, 0.95); /* 불투명도를 높여 더 어둡게 */
+            transition: opacity 0.5s ease;
+            z-index: 2; /* 이미지 위에 나타나도록 설정 */
+        }
+
+        /* 각 가림막 위치 */
+        #cover1 { top: 0; left: 0; }
+        #cover2 { top: 0; left: 50%; }
+        #cover3 { top: 20%; left: 0; }
+        #cover4 { top: 20%; left: 50%; }
+        #cover5 { top: 40%; left: 0; }
+        #cover6 { top: 40%; left: 50%; }
+        #cover7 { top: 60%; left: 0; }
+        #cover8 { top: 60%; left: 50%; }
+        #cover9 { top: 80%; left: 0; }
+        #cover10 { top: 80%; left: 50%; }
+    </style>
 </head>
 <body class="bg-light">
     <div class="container d-flex justify-content-center align-items-center min-vh-100">
-        <div class="card p-4 shadow" style="max-width: 500px; width: 100%;">
-            <h1 class="card-title text-center">우리말 도전</h1>
-            
-            <!-- 진행도: 우측 위로 이동 -->
-            <div class="d-flex justify-content-between">
-                <p id="progress" class="font-weight-bold">문제 1 / 5</p>
-                <p id="timer" class="font-weight-bold text-danger">15</p> <!-- 숫자 타이머 -->
+        <!-- 메인 컨테이너 -->
+        <div class="main-container">
+            <!-- 이미지 컨테이너 -->
+            <div class="image-container">
+                <!-- 10개의 가림막 요소 -->
+                <div class="cover" id="cover1"></div>
+                <div class="cover" id="cover2"></div>
+                <div class="cover" id="cover3"></div>
+                <div class="cover" id="cover4"></div>
+                <div class="cover" id="cover5"></div>
+                <div class="cover" id="cover6"></div>
+                <div class="cover" id="cover7"></div>
+                <div class="cover" id="cover8"></div>
+                <div class="cover" id="cover9"></div>
+                <div class="cover" id="cover10"></div>
             </div>
-            
-            <!-- 질문과 보기 -->
-            <p id="question" class="font-weight-bold card-text h5 mb-3"></p>
-            <div id="choices" class="mb-3"></div>
-            <p id="result" class="mt-3"></p>
-            
-            <!-- 점수 -->
-            <div class="d-flex justify-content-between mt-4">
-                <p id="score" class="text-muted mb-2">점수: 0점</p>
+
+            <!-- 퀴즈 카드 -->
+            <div class="card p-4 shadow quiz-card">
+                <h1 class="card-title text-center">우리말 도전</h1>
+                
+                <!-- 진행도: 우측 위로 이동 -->
+                <div class="d-flex justify-content-between">
+                    <p id="progress" class="font-weight-bold">문제 1 / 10</p>
+                    <p id="timer" class="font-weight-bold text-danger">15</p> <!-- 숫자 타이머 -->
+                </div>
+                
+                <!-- 질문과 보기 -->
+                <p id="question" class="font-weight-bold card-text h5 mb-3"></p>
+                <div id="choices" class="mb-3"></div>
+                <p id="result" class="mt-3"></p>
+                
+                <!-- 점수 -->
+                <div class="d-flex justify-content-between mt-4">
+                    <p id="score" class="text-muted mb-2">점수: 0점</p>
+                </div>
+                
+                <!-- 최종 점수 표시 -->
+                <p id="final-score" class="text-center font-weight-bold my-3" style="display: none;"></p>
+                <!-- 다시 시작 버튼 -->
+                <button id="restart" onclick="restartQuiz()" class="btn btn-secondary btn-block mt-3" style="display: none;">다시 시작</button>
             </div>
-            
-            <!-- 최종 점수 표시 -->
-            <p id="final-score" class="text-center font-weight-bold my-3" style="display: none;"></p>
-            <!-- 다시 시작 버튼 -->
-            <button id="restart" onclick="restartQuiz()" class="btn btn-secondary btn-block mt-3" style="display: none;">다시 시작</button>
         </div>
     </div>
-    update 2024.10.13.13:00
+    
     <script src="quiz.js"></script>
 </body>
 </html>

@@ -10,13 +10,14 @@ const finalScoreEl = document.getElementById("final-score");
 const restartBtn = document.getElementById("restart");
 const progressEl = document.getElementById("progress");
 const timerEl = document.getElementById("timer");
+let covers = Array.from(document.querySelectorAll(".cover")); // 모든 가림막 요소 가져오기
+
 
 function fetchQuestions() {
     fetch('questions.json')
         .then(response => response.json())
         .then(data => {
             questions = shuffleArray(data).slice(0, 10); // 문제를 섞고, 10개만 사용
-            console.log("Shuffled Questions: ", questions); // 섞인 문제를 콘솔에 출력
             displayChoices();
         })
         .catch(error => console.error('Error loading questions:', error));
@@ -51,25 +52,18 @@ function createChoiceButton(choice) {
 
     button.onclick = () => {
         clearTimer();
-        toggleActiveClass(button);
-        disableAllButtons(); // 모든 버튼을 비활성화
+        disableAllButtons(); // 다른 버튼 비활성화
         checkAnswer(choice);
     };
     return button;
 }
 
-// 모든 선택 버튼 비활성화 함수
 function disableAllButtons() {
     document.querySelectorAll("#choices .btn").forEach(btn => btn.disabled = true);
 }
 
 function updateProgress() {
     progressEl.innerText = `문제 ${currentQuestion + 1} / ${questions.length}`;
-}
-
-function toggleActiveClass(selectedButton) {
-    document.querySelectorAll("#choices .btn").forEach(btn => btn.classList.remove("active"));
-    selectedButton.classList.add("active");
 }
 
 function startTimer() {
@@ -96,7 +90,14 @@ function checkAnswer(selectedChoice) {
     const isCorrect = selectedChoice === correctAnswer;
 
     resultEl.innerText = isCorrect ? "정답입니다!" : (selectedChoice === null ? "시간 초과!" : "틀렸습니다!");
-    score += isCorrect ? 10 : -5;
+
+    if (isCorrect) {
+        score += 10;
+        revealCover(); // 정답일 때 가림막 제거
+    } else {
+        score -= 5;
+    }
+
     scoreEl.innerText = `점수: ${score}점`;
 
     setTimeout(() => {
@@ -110,23 +111,37 @@ function checkAnswer(selectedChoice) {
     }, 1000);
 }
 
-function toggleUI(showQuiz) {
-    const displayQuiz = showQuiz ? "block" : "none";
-    const displayResult = showQuiz ? "none" : "block";
-    
-    questionEl.style.display = displayQuiz;
-    choicesEl.style.display = displayQuiz;
-    resultEl.style.display = displayQuiz;
-    scoreEl.style.display = displayQuiz;
-    progressEl.style.display = displayQuiz;
-    timerEl.style.display = displayQuiz;
-    restartBtn.style.display = displayResult;
-    finalScoreEl.style.display = displayResult;
+function revealCover() {
+    if (covers.length > 0) {
+        // 랜덤하게 하나의 가림막을 제거
+        const randomIndex = Math.floor(Math.random() * covers.length);
+        const selectedCover = covers[randomIndex];
+
+        // 페이드 아웃 효과 후 제거
+        selectedCover.style.opacity = "0";
+        setTimeout(() => {
+            selectedCover.style.display = "none";
+        }, 500); // 0.5초 후 완전히 사라지게
+
+        // 배열에서 제거하여 다음 문제 맞출 때 다른 가림막을 선택할 수 있게 함
+        covers.splice(randomIndex, 1);
+    }
 }
 
 function endQuiz() {
-    toggleUI(false);
-    finalScoreEl.innerText = `모든 문제를 풀었습니다! 최종 점수: ${score}점`;
+    resetUI();
+    finalScoreEl.innerText = `모든 문제를 풀었습니다!\n 최종 점수: ${score}점`;
+}
+
+function resetUI() {
+    questionEl.style.display = "none";
+    choicesEl.style.display = "none";
+    resultEl.style.display = "none";
+    scoreEl.style.display = "none";
+    progressEl.style.display = "none";
+    timerEl.style.display = "none";
+    restartBtn.style.display = "block";
+    finalScoreEl.style.display = "block";
     finalScoreEl.classList.add("text-primary", "bg-light", "p-3", "rounded", "border");
 }
 
@@ -134,11 +149,31 @@ function restartQuiz() {
     clearTimer();
     currentQuestion = 0;
     score = 0;
-    scoreEl.innerText = `점수: ${score}점`;
     resultEl.innerText = "";
-    toggleUI(true);
-    fetchQuestions(); // 퀴즈 재시작 시 문제도 다시 섞기 위해 fetchQuestions 호출
+    scoreEl.innerText = `점수: ${score}점`;
+
+    questionEl.style.display = "block";
+    choicesEl.style.display = "block";
+    resultEl.style.display = "block";
+    scoreEl.style.display = "block";
+    progressEl.style.display = "block";
+    timerEl.style.display = "block";
+    restartBtn.style.display = "none";
+    finalScoreEl.style.display = "none";
+
+    // 모든 가림막 요소를 다시 가져와서 배열 초기화
+    covers = Array.from(document.querySelectorAll(".cover"));
+
+    covers.forEach(cover => {
+        cover.style.display = "block"; // 가림막이 보이도록 설정
+        cover.style.opacity = "1";     // 불투명도를 1로 설정하여 완전히 가림
+    });
+
+    displayChoices();
 }
+
+
+
 
 // 최초 실행 시 질문 데이터 로드
 fetchQuestions();
