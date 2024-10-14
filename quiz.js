@@ -111,10 +111,17 @@ function checkAnswer(selectedChoice) {
         score += 10;
         revealCover(); // 정답일 때 가림막 제거
     } else {
-        score -= 10;
+        score -= 0;
     }
 
+    // 점수 업데이트와 애니메이션 추가
     scoreEl.innerText = `점수: ${score}점`;
+    scoreEl.classList.add("score-increase");
+
+    // 애니메이션이 끝난 후 클래스 제거
+    setTimeout(() => {
+        scoreEl.classList.remove("score-increase");
+    }, 300);
 
     setTimeout(() => {
         currentQuestion++;
