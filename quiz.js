@@ -1,4 +1,4 @@
-const images = ['./img1.jpg', './img2.jpg', './img3.jpg', './img4.jpg'];
+const images = ['./img1.jpg', './img2.jpg', './img3.jpg', './img4.jpg', './img5.jpg'];
 let currentQuestion = 0;
 let score = 0;
 let timer;
