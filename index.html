@@ -6,7 +6,18 @@
     <title>우리말 도전</title>
     <!-- Bootstrap CSS CDN 추가 -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
     <style>
+        /* 전체 배경 이미지 */
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                        url('./bg.jpg'); 
+            background-size: cover; /* 배경 이미지가 화면 크기에 맞춰 조정 */
+            background-position: center; /* 배경 이미지 중앙 정렬 */
+            background-repeat: no-repeat; /* 이미지가 반복되지 않도록 설정 */
+            background-attachment: fixed; /* 페이지 스크롤 시 배경 이미지 고정 */
+        }
+
         /* 메인 컨테이너 스타일 */
         .main-container {
             max-width: 500px; /* 최대 너비를 제한하여 화면 크기에 관계없이 일관성 유지 */
@@ -23,7 +34,7 @@
             background-size: cover;
             background-position: center;
             border: 2px solid #ddd; /* 이미지 외곽선 */
-            border-radius: 15px; /* 부드러운 모서리 */
+            border-radius: 15px; /* 각 모서리를 부드럽게 */
         }
         
         /* 퀴즈 카드 스타일 */
@@ -31,6 +42,7 @@
             background-color: rgba(255, 255, 255, 0.9); /* 카드 배경색 */
             border: 1px solid #ddd; /* 카드 외곽선 */
             width: 100%; /* 화면 크기에 따라 조정 */
+            border-radius: 15px; /* 각 모서리를 부드럽게 */
         }
 
         /* 가림막 스타일 */
@@ -44,25 +56,26 @@
         }
 
         /* 각 가림막 위치 */
-        #cover1 { top: 0; left: 0; }
-        #cover2 { top: 0; left: 50%; }
+        #cover1 { top: 0; left: 0; border-top-left-radius: 15px; }
+        #cover2 { top: 0; left: 50%; border-top-right-radius: 15px; }
         #cover3 { top: 20%; left: 0; }
         #cover4 { top: 20%; left: 50%; }
         #cover5 { top: 40%; left: 0; }
         #cover6 { top: 40%; left: 50%; }
         #cover7 { top: 60%; left: 0; }
         #cover8 { top: 60%; left: 50%; }
-        #cover9 { top: 80%; left: 0; }
-        #cover10 { top: 80%; left: 50%; }
+        #cover9 { top: 80%; left: 0; border-bottom-left-radius: 15px; }
+        #cover10 { top: 80%; left: 50%; border-bottom-right-radius: 15px; }
+
     </style>
 </head>
-<body class="bg-light">
+<body>
     <div class="container d-flex justify-content-center align-items-center min-vh-100">
         <!-- 메인 컨테이너 -->
         <div class="main-container">
             <!-- 이미지 컨테이너 -->
-            <h2 class="card-title text-center">우리말 추리 퀴즈</h2>
-            <h5 class="text-center">문제를 풀고 숨은 인물을 맞춰라!</h5>
+            <h2 class="card-title text-center text-white font-weight-bold">우리말 추리 퀴즈</h2>
+            <p class="text-center text-white">문제를 풀고 숨은 인물을 맞춰라!</p>
             <div class="image-container">
                 <!-- 10개의 가림막 요소 -->
                 <div class="cover" id="cover1"></div>
@@ -102,7 +115,7 @@
             </div>
         </div>
     </div>
-    update : 20241013.17:00
+    <p class="text-center text-white mt-3">update : 20241013.17:00</p>
     
     <script src="quiz.js"></script>
 </body>
