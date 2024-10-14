@@ -111,7 +111,7 @@ function checkAnswer(selectedChoice) {
         score += 10;
         revealCover(); // 정답일 때 가림막 제거
     } else {
-        score -= 5;
+        score -= 10;
     }
 
     scoreEl.innerText = `점수: ${score}점`;
