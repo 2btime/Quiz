@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>네이버 로그인</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <style>
+    body {
+      background-color: #f8f9fa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .login-container {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    #naver_id_login {
+      margin-top: 20px;
+    }
+    .login-title {
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #343a40;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2 class="login-title">네이버 로그인</h2>
+    <p>네이버 계정으로 로그인하여 다양한 서비스를 이용해보세요.</p>
+    <div id="naver_id_login"></div>
+  </div>
+
+  <script type="text/javascript">
+    // 네이버 로그인 객체 생성 (Client ID와 Callback URL 설정)
+    var naver_id_login = new naver_id_login("PzuEelADiaR3ATkjpTo3", "http://127.0.0.1:5500/10_wordQuiz/callback.html");
+    var state = naver_id_login.getUniqState();
+    
+    // 네이버 로그인 버튼의 스타일 설정 (색상, 타입, 크기 설정)
+    naver_id_login.setButton("white", 2, 40);
+    // 도메인 설정 (세션 관리에 사용)
+    naver_id_login.setDomain("127.0.0.1");
+    // 생성한 상태 토큰 설정
+    naver_id_login.setState(state);
+    // 로그인 창을 팝업 방식으로 열도록 설정
+    naver_id_login.setPopup(false);
+    // 네이버 로그인 초기화 (버튼 노출)
+    naver_id_login.init_naver_id_login();
+  </script>
+
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

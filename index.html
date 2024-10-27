@@ -126,7 +126,17 @@
             </div>
         </div>
     </div>
-    <p class="text-center text-white mt-3">update : 20241013.17:00</p>
+    <!-- 사용자 이름 표시 -->
+    <p id="user-name" class="text-center text-white mt-3"></p>
+    
+    <script>
+        // sessionStorage에서 사용자 이름 가져오기
+        var userName = sessionStorage.getItem("userName");
+        if (userName) {
+            // 사용자 이름이 있을 경우 페이지에 표시
+            document.getElementById("user-name").innerText = "로그인한 사용자 이름: " + userName;
+        }
+    </script>
     
     <script src="quiz.js"></script>
 </body>
