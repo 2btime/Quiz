@@ -28,13 +28,13 @@
                     // 부모 창의 세션 스토리지에 사용자 이름 저장
                     window.opener.sessionStorage.setItem("userName", name);
                     // 부모 창에서 index 페이지로 이동
-                    window.opener.location.href = "http://127.0.0.1:5500/10_wordQuiz/index.html";
+                    window.opener.location.href = "http://127.0.0.1:5500/10_wordQuiz/main.html";
                     // 팝업 창 닫기
                     window.close();
                 } else {
                     // 팝업이 아닌 경우 현재 창에서 이동
                     sessionStorage.setItem("userName", name);
-                    window.location.href = "http://127.0.0.1:5500/10_wordQuiz/index.html";
+                    window.location.href = "http://127.0.0.1:5500/10_wordQuiz/main.html";
                 }
             } else {
                 alert("로그인에 실패했습니다. 사용자 정보를 가져오지 못했습니다.");
